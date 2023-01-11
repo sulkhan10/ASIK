@@ -1,0 +1,38 @@
+[
+  {
+    "username": "psabin0",
+    "email": "pcrowley0@is.gd",
+    "password": "dmh2TbdCYQ8z",
+    "role": "pasien"
+  },
+  {
+    "username": "kspurr1",
+    "email": "kbiasetti1@ft.com",
+    "password": "NaBIRRnCM",
+    "role": "dokter"
+  },
+  {
+    "username": "igraeme2",
+    "email": "iparzizek2@geocities.com",
+    "password": "qUywv0hsS",
+    "role": "pasien"
+  },
+  {
+    "username": "ghegg3",
+    "email": "gbortoletti3@diigo.com",
+    "password": "sruAvOhuyvx",
+    "role": "dokter"
+  },
+  {
+    "username": "gchimes4",
+    "email": "gmunroe4@thetimes.co.uk",
+    "password": "rI88O3NM8KD",
+    "role": "pasien"
+  },
+  {
+    "username": "bkluger5",
+    "email": "bschnitter5@auda.org.au",
+    "password": "OSG9Oki3D",
+    "role": "dokter"
+  }
+]
