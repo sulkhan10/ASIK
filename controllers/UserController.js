@@ -24,6 +24,8 @@ class UserController {
           let validatePassword = bcrypt.compareSync(password, user.password);
           if (validatePassword) {
             req.session.userId = user.id;
+            req.session.role = user.role;
+            console.log(req.session);
             return res.redirect("/home");
           } else {
             let error = `Password Salah`;
