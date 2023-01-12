@@ -1,19 +1,14 @@
-[{
-  "DiseaseId": 1,
-  "SymptomId": 6
-}, {
-  "DiseaseId": 2,
-  "SymptomId": 3
-}, {
-  "DiseaseId": 1,
-  "SymptomId": 4
-}, {
-  "DiseaseId": 1,
-  "SymptomId": 6
-}, {
-  "DiseaseId": 2,
-  "SymptomId": 1
-}, {
-  "DiseaseId": 3,
-  "SymptomId": 5
-}]
+[
+  {
+    "DiseaseId": 1,
+    "SymptomId": 1
+  },
+  {
+    "DiseaseId": 2,
+    "SymptomId": 2
+  },
+  {
+    "DiseaseId": 3,
+    "SymptomId": 3
+  }
+]
