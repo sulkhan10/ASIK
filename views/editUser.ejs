@@ -11,74 +11,56 @@
 </head>
 
 <body>
-    <%- include('partials/navbar-landing') %>
+    <%- include('partials/navbar') %>
 <br>
         <center>
-            <h3>Selamat datang di ASIK</h3>
-            <h6>silahkan daftar</h>
+            <h3>Edit User and Contact</h3>
         </center>
-
-
         <div class="container mt-4">
             <div class="card m-auto" style="width: 50%">
-                <div class="card-header">
-                    Form Register
-                </div>
+            
                 <div class="card-body">
                     <form action="" method="post" autocomplete="off">
                         <div class="mb-3">
                             <label for="firstName" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstName" placeholder="ex: Patrick"
-                                name="firstName">
+                                name="firstName" value="<%= user.Contact.firstName %>">
                         </div>
                         <div class="mb-3">
                             <label for="lastName" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastName" placeholder="ex: Star"
-                                name="lastName">
+                                name="lastName" value="<%= user.Contact.lastName %>">
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone Number</label>
                             <input type="text" class="form-control" id="phone" placeholder="ex: 69696969"
-                                name="phone">
+                                name="phone" value="<%= user.Contact.phone %>">
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
                             <input type="text" class="form-control" id="address" placeholder="ex: PurwoDaddy"
-                                name="address">
+                                name="address" value="<%= user.Contact.address %>">
                         </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" placeholder="ex: javascript"
-                                name="username">
+                                name="username" value="<%= user.username %>">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" placeholder="ex: javascript@example.com"
-                                name="email">
+                                name="email" value="<%= user.email %>">
 
 
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="ex: password123"
-                                name="password">
-
-
-                            <div class="form-group">
-                                <label for="role">Role</label>
-                                <select class="form-control" id="role" name="role">
-                                    <option selected disabled>--choose the role--</option>
-                                    <option value="patient">Pasien</option>
-                                    <option value="doctor">Dokter</option>
-                                </select>
-                            </div>
 
                             <div class="form-group">
                                 <label for="role">Penyakit</label>
                                 <select class="form-control" id="role" name="DiseaseId">
-                                    <option value="" selected disabled >--choose the role--</option>
+                                    <option value=""  disabled >--choose the role--</option>
                                     <% diseases.forEach(x=>{%>
-                                        <option value="<%= x.id %>"><%= x.name %> </option>
+                                        <option value="<%= x.id%>" <%= x.id==user.DiseaseId ? 'selected' : '' %> ><%= x.name %> </option>
                                     <%}) %> 
                                 </select>
                             </div>
@@ -86,7 +68,7 @@
 
 
                         </div>
-                        <button type="submit" class="btn btn-outline-primary">Register</button>
+                        <button type="submit" class="btn btn-outline-primary">Update</button>
                     </form>
                 </div>
             </div>

@@ -12,7 +12,7 @@
     "SymptomId": 3
   },
   {
-    "DiseaseId": 1,
+    "DiseaseId": 4,
     "SymptomId": 3
   },
   {
@@ -21,6 +21,6 @@
   },
   {
     "DiseaseId": 3,
-    "SymptomId": 1
+    "SymptomId": 4
   }
 ]

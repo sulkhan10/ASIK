@@ -39,6 +39,30 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "first name can't be null"
+        },
+        notEmpty : {
+            msg: "first can't be empty"
+        }
+      }
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "last name can't be null"
+        },
+        notEmpty : {
+            msg: "last name can't be empty"
+        }
+      }
+    },
     UserId: DataTypes.INTEGER
 
   }, {

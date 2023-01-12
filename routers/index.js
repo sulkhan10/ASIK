@@ -13,13 +13,13 @@ router.post('/register', UserController.postRegister)
 router.get('/login', UserController.loginForm)
 router.post('/login', UserController.postLogin)
 
-router.use((req, res, next) => {
-  if (!req.session.userId) {
-    res.redirect('/login')
-  } else {
-    next()
-  }
-})
+// router.use((req, res, next) => {
+//   if (!req.session.userId) {
+//     res.redirect('/login')
+//   } else {
+//     next()
+//   }
+// })
 
 router.get('/diseases', DiseaseController.diseases)
 router.get('/symptoms', SymptomController.symptoms)
@@ -31,9 +31,10 @@ router.get('/logout', UserController.getLogout)
 router.get('/home', (req, res) => {
   res.render('home')
 })
-router.get('/contacts/add', ContactController.addContacts)
-router.post('/contacts/add', ContactController.createContacts)
-router.get('/contacts/:id/delete', ContactController.deleteContacts)
+router.get('/users/:id/edit', UserController.editUser)
+router.post('/users/:id/edit', UserController.updateUser)
+router.get('/users/:id/delete', UserController.deleteUser)
+
 router.get('/diseases', DiseaseController.diseases)
 router.get('/symptoms', SymptomController.addSymptoms)
 router.post('/symptoms', SymptomController.createSymptoms)

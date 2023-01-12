@@ -1,17 +1,39 @@
-const { User, Disease, Symptom, SymptomDiseases } = require("../models");
+const {
+  User,
+  Disease,
+  Symptom,
+  SymptomDiseases,
+  Contact,
+} = require("../models");
 const bcrypt = require("bcryptjs");
-const { Op } = require('sequelize')
-const sendMail = require('../helpers/sendMail')
+const { Op } = require("sequelize");
+const sendMail = require("../helpers/sendMail");
 
 class UserController {
   static registerForm(req, res) {
-    res.render("registerForm");
+    Disease.findAll()
+      .then((diseases) => res.render("registerForm", { diseases }))
+      .catch((err) => res.send(err));
   }
   static postRegister(req, res) {
-    let { username, email, password, role } = req.body;
-    User.create({ username, email, password, role })
+    let {
+      phone,
+      address,
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      role,
+      DiseaseId,
+    } = req.body;
+    // res.send(req.body)
+    User.create({ username, email, password, role, DiseaseId })
       .then(() => {
-        sendMail(email)
+        return Contact.create({ phone, address, firstName, lastName });
+      })
+      .then(() => {
+        sendMail(email);
         res.redirect("/login");
       })
       .catch((err) => res.send(err));
@@ -44,15 +66,18 @@ class UserController {
   }
 
   static users(req, res) {
-    let {search} = req.query
-    let options = {where : {role : 'patient'},include: Disease}
+    let { search } = req.query;
+    let options = {
+      where: { role: "patient" },
+      include: [{ model: Disease }, { model: Contact }],
+    };
     if (search) {
       options.where.username = {
-        [Op.iLike] : `%${search}%`
-      }
+        [Op.iLike]: `%${search}%`,
+      };
     }
     User.findAll(options)
-    // .then(data=>res.send(data))
+      // .then(data=>res.send(data))
       .then((users) => res.render("users", { users }))
       .catch((err) => res.send(err));
   }
@@ -62,21 +87,56 @@ class UserController {
       if (err) {
         res.send(err);
       } else {
-        res.redirect('/')
+        res.redirect("/");
       }
     });
   }
-  // static getSymptom(req, res) {
-  //   const id = req.params.id
-  //   User.findByPk(id, {
-  //     include: 
-  //     Symptom
-  //   })
-  //   .then(patients => {
-  //     const symptoms = patients.Symptom.map(el => el.id)
-  //     return Disease.findOne({include: [{model: SymptomDiseases, where: symptoms}]})
-  //   })
-  // }
+  static deleteUser(req, res) {
+    const id = req.params.id;
+    User.findByPk(id)
+    .then((user) => {
+      if (!user) throw new Error ("User Not found");
+      return user.destroy();
+    })
+    .then(()=> {return Contact.findByPk(id)})
+    .then((contact) => {
+      if (!contact) throw new Error ("Contact Not found");
+      return contact.destroy();
+    })
+      .then(() => res.redirect("/users"))
+      .catch((err) => res.send(err));
+    }
+    
+    static editUser(req,res){
+    const id = req.params.id;
+    let options = {
+      where: { role: "patient" },
+      include: { model: Contact },
+    };
+    let data = {}
+    Disease.findAll()
+    .then(diseases=>{
+      data.diseases = diseases
+      return User.findByPk(id,options)
+    })
+      .then((user) =>{
+        data.user = user
+        res.render("editUser", { ...data })} )
+      .catch((err) => res.send(err));
+  }
+  static updateUser(req,res){
+    let {id} = req.params
+    let {firstName,lastName,phone,address,username,email,DiseaseId} =req.body
+    // res.send(req.body)
+    User.update({ username, email, DiseaseId },{where:{id}})
+      .then(() => {
+        return Contact.update({ phone, address, firstName, lastName },{where:{id}});
+      })
+      .then(() => {
+        res.redirect("/users");
+      })
+      .catch((err) => res.send(err));
+  }
 }
 
 module.exports = UserController;

@@ -15,12 +15,6 @@ module.exports = {
           model : 'Diseases'
         }
       },
-      SymptomId: {
-        type: Sequelize.INTEGER,
-        references : {
-          model : 'Symptoms'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

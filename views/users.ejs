@@ -36,31 +36,31 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td>username</td>
-                        <td>role</td>
-                        <td>disease</td>
+                        <td>NAME</td>
+                        <td>ADDRESS</td>
+                        <td>ROLE</td>
+                        <td>DISEASE</td>
+                        <td>OPTIONs</td>
                     </tr>
                 </thead>
                 <tbody>
                     <% users.forEach(x=>{%>
                         <tr>
                             <td>
-                                <%= x.username %>
+                                <%= x.Contact.firstName %>
+                            </td>
+                            <td>
+                                <%= x.Contact.address %>
                             </td>
                             <td>
                                 <%= x.role %>
                             </td>
                             <td>
-                                <% let data = x.Diseases.map((el)=>{%>
-                                    <% return el.name %> 
-                                 <%}).join(',\n') %> 
-                                 <% if (data) {%> 
-                                    
-                                     <%= data %> 
-                                     <% } else {%> 
-                                    patient is healthy
-                                    <% } %> 
-                             
+                                <%= x.Disease.name %>      
+                            </td>
+                            <td>
+                                <a href="/users/<%= x.id %>/edit" class="btn btn-danger btn-sm">Edit</a>
+                                <a href="/users/<%= x.id %>/delete" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
 
