@@ -5,7 +5,7 @@ const DiseaseController = require('../controllers/DiseaseController')
 const SymptomController = require('../controllers/SymptomController')
 const router = express.Router()
 
-router.get('/', UserController.home)
+router.get('/', UserController.landing)
 router.get('/register', UserController.registerForm)
 router.post('/register', UserController.postRegister)
 router.get('/login', UserController.loginForm)
@@ -19,16 +19,30 @@ router.post('/login', UserController.postLogin)
 //   }
 // })
 
-router.get('/diseases', DiseaseController.diseases)
+let isLoggedIn = (req, res, next) => {
+  if (!req.session.userId) {
+        res.redirect('/login')
+      } else {
+        next()
+      }
+}
+let isDoctor = (req, res, next) => {
+  if (req.session.role !== 'doctor') {
+    let errors = `MOHON MAAF, menu Users dan akses data sensitif hanya bisa dilakukan oleh Dokter`
+        res.redirect(`/home?errors=${errors}`)
+      } else {
+        next()
+      }
+}
+
+router.get('/diseases', isLoggedIn, DiseaseController.diseases)
 router.get('/symptoms', SymptomController.symptoms)
-router.get('/users', UserController.users)
+router.get('/users' ,isLoggedIn, isDoctor, UserController.users)
 router.get('/contacts', ContactController.contacts)
 
 
 router.get('/logout', UserController.getLogout)
-router.get('/home', (req, res) => {
-  res.render('home')
-})
+router.get('/home', UserController.home)
 router.get('/users/:id/edit', UserController.editUser)
 router.post('/users/:id/edit', UserController.updateUser)
 router.get('/users/:id/delete', UserController.deleteUser)

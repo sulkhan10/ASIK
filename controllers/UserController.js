@@ -10,9 +10,13 @@ const { Op } = require("sequelize");
 const sendMail = require("../helpers/sendMail");
 
 class UserController {
-  static home(req, res) {
+  static landing(req, res) {
     let date = User.timeNow("id-ID");
     res.render("landing", { date });
+  }
+  static home(req, res) {
+    let { errors } = req.query;
+    res.render("home", { errors });
   }
   static registerForm(req, res) {
     let { errors } = req.query;
