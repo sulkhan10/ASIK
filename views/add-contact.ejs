@@ -22,7 +22,7 @@
       <form action="/contacts/add" method="post">
 
         <% if (errors) { %>
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
             <% errors=errors.split(',') %>
               <% errors.forEach(el=> { %>
                 <%= el %> <br>
@@ -38,12 +38,12 @@
               <div class="card-body">
                 <form action="" method="post" autocomplete="off">
                   <div class="mb-3">
-                    <label class="form-label">Phone</label>
+                    <label class="form-label">Phone:</label>
                     <input type="text" class="form-control" id="phone" name="phone">
                   </div>
 
                   <div class="mb-3">
-                    <label class="form-label">Address</label>
+                    <label class="form-label">Address:</label>
                     <input type="text" class="form-control" id="address" name="address">
                   </div>
 

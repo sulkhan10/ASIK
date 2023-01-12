@@ -20,11 +20,13 @@
             </center>
 
             <a href="/contacts/add" class="btn btn-outline-primary">Add Contact</a>
-            <table class="table">
+
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td>phone</td>
-                        <td>address</td>
+                        <td>Phone</td>
+                        <td>Address</td>
+                        <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +38,10 @@
                             <td>
                                 <%= x.address %>
                             </td>
+                            <td>
+                                <a href="/contacts/delete" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+
                         </tr>
 
                         <%}) %>
