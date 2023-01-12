@@ -1,5 +1,16 @@
-const { Symptom } = require('../models')
+const { Symptom,Disease } = require('../models')
 class SymptomController{
+  static symptoms(req,res){
+    Symptom.findAll({include:[Disease]})
+    .then((symptoms) => {
+      res.render('symptoms',{symptoms})
+    })
+    .catch(err => {
+      res.send(err)
+    })
+  }
+
+
   static addSymptoms(req, res) {
     res.render(`add-symptoms`, { errors: req.query.errors })
   }

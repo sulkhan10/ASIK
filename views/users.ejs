@@ -20,12 +20,14 @@
 
 
             <div class="row">
+                <form action="/users" method="get">
                 <div class="col-md-11">
                     <input type="search" class="form-control" name="search">
                 </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
+            </form>
             </div>
             </form>
 
@@ -35,8 +37,8 @@
                 <thead>
                     <tr>
                         <td>username</td>
-                        <td>email</td>
                         <td>role</td>
+                        <td>disease</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,10 +48,19 @@
                                 <%= x.username %>
                             </td>
                             <td>
-                                <%= x.email %>
+                                <%= x.role %>
                             </td>
                             <td>
-                                <%= x.role %>
+                                <% let data = x.Diseases.map((el)=>{%>
+                                    <% return el.name %> 
+                                 <%}).join(',\n') %> 
+                                 <% if (data) {%> 
+                                    
+                                     <%= data %> 
+                                     <% } else {%> 
+                                    patient is healthy
+                                    <% } %> 
+                             
                             </td>
                         </tr>
 

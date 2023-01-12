@@ -12,42 +12,37 @@
 
 <body>
     <%- include('partials/navbar') %>
-
         <div class="container"></div>
         <div class="mt-4 ml-5 mr-5 mb-4">
             <center>
-                <h1>User's Contact</h1>
+                <h1>Symptoms</h1>
             </center>
 
-            <a href="/contacts/add" class="btn btn-outline-primary">Add Contact</a>
 
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                     <tr>
-                        <td>Phone</td>
-                        <td>Address</td>
-                        <td>Action</td>
+                        <td>Name</td>
+                        <td>Diseases</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% contacts.forEach(x=>{%>
+                    <% symptoms.forEach(x=>{%>
                         <tr>
                             <td>
-                                <%= x.phone %>
+                                <%= x.name %>
                             </td>
                             <td>
-                                <%= x.address %>
+                                <% let data = x.Diseases.map((el)=>{%>
+                                   <% return el.name %> 
+                                <%}).join(',\n') %> 
+                                <%= data %> 
                             </td>
-                            <td>
-                                <a href="/contacts/<%= x.id %>/delete" class="btn btn-danger btn-sm">Delete</a>
-                            </td>
-
                         </tr>
 
                         <%}) %>
                 </tbody>
             </table>
-        </div>
 </body>
 
 </html>

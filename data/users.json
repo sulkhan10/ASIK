@@ -1,20 +1,26 @@
 [
   {
-    "username": "psabin0",
+    "username": "asep1",
     "email": "pcrowley0@is.gd",
-    "password": "dmh2TbdCYQ8z",
-    "role": "pasien"
+    "password": "12345",
+    "role": "patient"
   },
   {
-    "username": "kspurr1",
+    "username": "asep2",
     "email": "kbiasetti1@ft.com",
-    "password": "NaBIRRnCM",
-    "role": "dokter"
+    "password": "12345",
+    "role": "patient"
   },
   {
-    "username": "igraeme2",
+    "username": "asep3",
     "email": "iparzizek2@geocities.com",
-    "password": "qUywv0hsS",
-    "role": "pasien"
+    "password": "12345",
+    "role": "patient"
+  },
+  {
+    "username": "chopper",
+    "email": "iparzizek2@geocities.com",
+    "password": "12345",
+    "role": "doctor"
   }
 ]
