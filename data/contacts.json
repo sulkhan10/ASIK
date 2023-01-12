@@ -1,32 +1,14 @@
 [
   {
     "phone": "0816531919830",
-    "address": "Jakarta",
-    "UserId": 5
+    "address": "Jakarta"
   },
   {
     "phone": "081953754 160",
-    "address": "Union Park",
-    "UserId": 5
+    "address": "Union Park"
   },
   {
     "phone": "088221686820",
-    "address": "Kinsman Alley",
-    "UserId": 1
-  },
-  {
-    "phone": "086956195379",
-    "address": "2nd Lane",
-    "UserId": 1
-  },
-  {
-    "phone": "086355909989",
-    "address": "Bellgrove Hill",
-    "UserId": 3
-  },
-  {
-    "phone": "081483951660",
-    "address": "Bekasi",
-    "UserId": 5
+    "address": "Kinsman Alley"
   }
 ]
