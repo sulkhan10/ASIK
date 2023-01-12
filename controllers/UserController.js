@@ -1,6 +1,7 @@
 const { User, Disease, Symptom, SymptomDiseases } = require("../models");
 const bcrypt = require("bcryptjs");
 const { Op } = require('sequelize')
+const sendMail = require('../helpers/sendMail')
 
 class UserController {
   static registerForm(req, res) {
@@ -10,6 +11,7 @@ class UserController {
     let { username, email, password, role } = req.body;
     User.create({ username, email, password, role })
       .then(() => {
+        sendMail(email)
         res.redirect("/login");
       })
       .catch((err) => res.send(err));
