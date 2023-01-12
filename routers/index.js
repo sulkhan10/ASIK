@@ -22,6 +22,7 @@ router.use((req, res, next) => {
   }
 })
 
+router.get('/logout', UserController.getLogout)
 router.get('/home', (req, res) => {
   res.render('home')
 })

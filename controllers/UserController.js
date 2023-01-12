@@ -35,12 +35,22 @@ class UserController {
         }
       })
       .catch((err) => res.send(err));
-    }
-    
-    static users(req,res) {
-      User.findAll()
-      .then(users=>res.render('users',{users}))
+  }
+
+  static users(req, res) {
+    User.findAll()
+      .then((users) => res.render("users", { users }))
       .catch((err) => res.send(err));
+  }
+
+  static getLogout(req, res) {
+    req.session.destroy(function (err) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.redirect('/')
+      }
+    });
   }
 }
 
