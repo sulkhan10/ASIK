@@ -20,6 +20,7 @@ router.use((req, res, next) => {
     next()
   }
 })
+
 router.get('/diseases', DiseaseController.diseases)
 router.get('/symptoms', SymptomController.symptoms)
 router.get('/users', UserController.users)
