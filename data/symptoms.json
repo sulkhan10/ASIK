@@ -5,12 +5,30 @@
   }
   ,
   {
-    "name": "Batuk"
+    "name": "Batuk" 
   },
   {
     "name": "Sakit Kepala"
   },
   {
-    "name": "Mual"
+    "name": "Lemas"
+  },
+  {
+    "name": "Bersin"
+  },
+  {
+    "name": "Nyeri"
+  },
+  {
+    "name": "Sesak Napas"
+  },
+  {
+    "name": "Sakit Perut"
+  },
+  {
+    "name": "Dada seperti tertusuk"
+  },
+  {
+    "name": "Demam"
   }
 ]

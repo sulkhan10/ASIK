@@ -1,24 +1,81 @@
 [
-  
+  {
+    "username": "doctor",
+    "email": "iparzizek2@geocities.com",
+    "password": "12345",
+    "role": "doctor",
+    "DiseaseId" : 1
+  }
+  ,
   {
     "username": "asep1",
-    "email": "kbiasetti1@ft.com",
+    "email": "iparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 1
+  }
+  ,
+  {
+    "username": "faang",
+    "email": "akbiasetaati1@ft.com",
     "password": "12345",
     "role": "patient",
     "DiseaseId" : 2
   },
   {
-    "username": "asep2",
-    "email": "iparzizek2@geocities.com",
+    "username": "apay",
+    "email": "iparzizeksa2@geocities.com",
     "password": "12345",
     "role": "patient",
     "DiseaseId" : 3
   },
   {
-    "username": "chopper",
-    "email": "iparzizek2@geocities.com",
+    "username": "kleopatra",
+    "email": "asxiparzizek2@geocities.com",
     "password": "12345",
-    "role": "doctor",
-    "DiseaseId" : 1
+    "role": "patient",
+    "DiseaseId" : 4
+  },
+  {
+    "username": "superkips",
+    "email": "isdcvaparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 5
+  },
+  {
+    "username": "kaptentani",
+    "email": "asdasiparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 6
+  },
+  {
+    "username": "hajinaim",
+    "email": "asdxciparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 7
+  },
+  {
+    "username": "tuanmuda",
+    "email": "asdwcsiparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 8
+  },
+  {
+    "username": "lumanyun",
+    "email": "asdxcsciparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 9
+  },
+  {
+    "username": "perjaka",
+    "email": "asdwfwiparzizek2@geocities.com",
+    "password": "12345",
+    "role": "patient",
+    "DiseaseId" : 10
   }
 ]

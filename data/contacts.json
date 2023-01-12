@@ -1,20 +1,68 @@
 [
   {
-    "phone": "0816531919830",
-    "address": "Jakarta",
-    "firstName" : "Asep",
-    "lastName" : "Pertamax"
-  },
-  {
-    "phone": "081953754 160",
-    "address": "Union Park",
-    "firstName" : "Asep",
-    "lastName" : "Pertamax"
-  },
-  {
-    "phone": "088221686820",
+    "phone": "08438221686820",
     "address": "Kinsman Alley",
     "firstName" : "Toni",
     "lastName" : "Chopper"
+  },
+  {
+    "phone": "083316531919830",
+    "address": "Jakarta",
+    "firstName" : "Sang",
+    "lastName" : "Surya"
+  },
+  {
+    "phone": "23081953754 160",
+    "address": "Union Park",
+    "firstName" : "Kita",
+    "lastName" : "Bisa"
+  },
+  {
+    "phone": "02281953754 160",
+    "address": "Godison Park",
+    "firstName" : "Vin",
+    "lastName" : "Des"
+  },
+  {
+    "phone": "08192353754 160",
+    "address": "Marley",
+    "firstName" : "Pembalap",
+    "lastName" : "Racing"
+  },
+  {
+    "phone": "08195553754 160",
+    "address": "Colorado",
+    "firstName" : "Pak",
+    "lastName" : "Panut"
+  },
+  {
+    "phone": "081953754 160",
+    "address": "Semarang",
+    "firstName" : "Pria",
+    "lastName" : "Panas"
+  },
+  {
+    "phone": "08195373454 160",
+    "address": "Magelang",
+    "firstName" : "Hokage",
+    "lastName" : "Chunin"
+  },
+  {
+    "phone": "082341953754 160",
+    "address": "Kajarta",
+    "firstName" : "Wanita",
+    "lastName" : "Comel"
+  },
+  {
+    "phone": "08195223754 160",
+    "address": "Seoul",
+    "firstName" : "Park",
+    "lastName" : "Jisung"
+  },
+  {
+    "phone": "08195334754 160",
+    "address": "Sydny",
+    "firstName" : "Pak",
+    "lastName" : "Kades"
   }
 ]

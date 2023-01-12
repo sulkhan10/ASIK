@@ -18,5 +18,35 @@
     "name": "Gastroenteritis",
     "description": "Gejala ugastroenteritis adalah diare, muntah, demam, sakit kepala, mual dan sakit perut",
     "level": 10
+  },
+  {
+    "name": "Pneumonia",
+    "description": "Paru yang mengalami penurunan fungsi akibat bakteri",
+    "level": 6
+  },
+  {
+    "name": "Corona",
+    "description": "Disebabkan, virus yang menyebabkan penigkatan morbiditas",
+    "level": 7
+  },
+  {
+    "name": "Infract Miocard",
+    "description": "Keadaan dimana jantung tidak bergungsu semestinya",
+    "level": 4
+  },
+  {
+    "name": "Diabetes",
+    "description": "Metabolisme terganggu karena penurunan fungsi pankreas",
+    "level": 5
+  },
+  {
+    "name": "Rhinitis",
+    "description": "Alergi terhadap hawa dingin",
+    "level": 2
+  },
+  {
+    "name": "Radang Kelenjar Amandel",
+    "description": "Karena serangan bakteri pada tonsil, sering terjadi pada anak",
+    "level": 6
   }
 ]
