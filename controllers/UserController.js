@@ -18,6 +18,7 @@ class UserController {
   }
   static postLogin(req, res) {
     let { username, password } = req.body;
+    console.log(username, password);
     User.findOne({ where: { username } })
       .then((user) => {
         if (user) {
