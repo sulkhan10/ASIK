@@ -27,6 +27,8 @@ router.get('/home', (req, res) => {
 })
 router.get('/users', UserController.users)
 router.get('/contacts', ContactController.contacts)
+router.get('/contacts/add', ContactController.addContacts)
+router.post('/contacts/add', ContactController.createContacts)
 router.get('/diseases', DiseaseController.diseases)
 router.get('/symptoms', SymptomController.addSymptoms)
 router.post('/symptoms', SymptomController.createSymptoms)

@@ -7,7 +7,20 @@ class ContactController{
         .catch((err) => res.send(err));
     }
     
+    static addContacts(req, res) {
+        res.render(`add-contact`)
+      }
     
+      static createContacts(req, res) {
+        const { phone, address } = req.body
+        Contact.create({phone, address})
+        .then(() => {
+          res.redirect('/contacts')
+        })
+        .catch(err => {
+          res.send(err)
+        })
+      }
 
 }
 
