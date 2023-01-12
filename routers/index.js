@@ -33,6 +33,7 @@ router.get('/home', (req, res) => {
 })
 router.get('/contacts/add', ContactController.addContacts)
 router.post('/contacts/add', ContactController.createContacts)
+router.get('/contacts/:id/delete', ContactController.deleteContacts)
 router.get('/diseases', DiseaseController.diseases)
 router.get('/symptoms', SymptomController.addSymptoms)
 router.post('/symptoms', SymptomController.createSymptoms)

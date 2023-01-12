@@ -42,7 +42,14 @@ class UserController {
   }
 
   static users(req, res) {
-    User.findAll({where : {role : 'patient'},include: Disease})
+    let {search} = req.query
+    let options = {where : {role : 'patient'},include: Disease}
+    if (search) {
+      options.where.username = {
+        [Op.iLike] : `%${search}%`
+      }
+    }
+    User.findAll(options)
     // .then(data=>res.send(data))
       .then((users) => res.render("users", { users }))
       .catch((err) => res.send(err));

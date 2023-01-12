@@ -29,9 +29,10 @@ class ContactController{
       }
 
       static deleteContacts(req, res) {
-        Contact.destroy()
+        let {id} = req.params
+        Contact.destroy({where:{id}})
         .then(() => {
-          res.redirect('/user')
+          res.redirect('/contacts')
         })
         .catch(err => {
           res.send(err)
