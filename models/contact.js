@@ -15,8 +15,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Contact.init({
-    phone: DataTypes.STRING,
-    address: DataTypes.STRING,
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "phone number can't be null"
+        },
+        notEmpty : {
+            msg: "phone number can't be empty"
+        }
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "address can't be null"
+        },
+        notEmpty : {
+            msg: "address can't be empty"
+        }
+      }
+    },
     UserId: DataTypes.INTEGER
 
   }, {

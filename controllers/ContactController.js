@@ -8,7 +8,7 @@ class ContactController{
     }
     
     static addContacts(req, res) {
-        res.render(`add-contact`)
+        res.render(`add-contact`, { errors: req.query.errors })
       }
     
       static createContacts(req, res) {
@@ -18,9 +18,31 @@ class ContactController{
           res.redirect('/contacts')
         })
         .catch(err => {
-          res.send(err)
+          if (err)
+          if (err.name == "SequelizeValidationError") {
+            let errors = err.errors.map(el => el.message)
+            res.redirect(`/contacts/add?errors=${errors}`)
+          } else {
+            res.send(err)
+          }
         })
       }
+
+
+
+
+      // .then(() => {
+      //   res.redirect(`/`)
+      // })
+      // .catch(err => {
+      //   if (err.name == "SequelizeValidationError") {
+      //     let errors = err.errors.map(el => el.message)
+      //     res.redirect(`/memes/add?errors=${errors}`)
+      //   } else {
+      //     res.send(err)
+      //   }
+      // })
+
 
 }
 
