@@ -20,16 +20,17 @@ router.use((req, res, next) => {
     next()
   }
 })
+router.get('/diseases', DiseaseController.diseases)
+router.get('/symptoms', SymptomController.symptoms)
+router.get('/users', UserController.users)
+router.get('/contacts', ContactController.contacts)
+
 
 router.get('/logout', UserController.getLogout)
 router.get('/home', (req, res) => {
   res.render('home')
 })
-router.get('/users', UserController.users)
-router.get('/contacts', ContactController.contacts)
 router.get('/contacts/add', ContactController.addContacts)
 router.post('/contacts/add', ContactController.createContacts)
-router.get('/diseases', DiseaseController.diseases)
-router.get('/symptoms', SymptomController.addSymptoms)
-router.post('/symptoms', SymptomController.createSymptoms)
+// router.post('/symptoms', SymptomController.createSymptoms)
 module.exports = router

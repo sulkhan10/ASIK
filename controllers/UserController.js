@@ -18,7 +18,7 @@ class UserController {
   }
   static postLogin(req, res) {
     let { username, password } = req.body;
-    console.log(username, password);
+    // console.log(username, password);
     User.findOne({ where: { username } })
       .then((user) => {
         if (user) {
@@ -26,7 +26,7 @@ class UserController {
           if (validatePassword) {
             req.session.userId = user.id;
             req.session.role = user.role;
-            console.log(req.session);
+            // console.log(req.session);
             return res.redirect("/home");
           } else {
             let error = `Password Salah`;
@@ -41,7 +41,8 @@ class UserController {
   }
 
   static users(req, res) {
-    User.findAll()
+    User.findAll({where : {role : 'patient'},include: Disease})
+    // .then(data=>res.send(data))
       .then((users) => res.render("users", { users }))
       .catch((err) => res.send(err));
   }

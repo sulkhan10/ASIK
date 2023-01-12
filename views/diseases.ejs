@@ -25,6 +25,7 @@
                         <td>Name</td>
                         <td>Description</td>
                         <td>Level</td>
+                        <td>Symptoms</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,12 @@
                             </td>
                             <td>
                                 <%= x.level %>
+                            </td>
+                            <td>
+                                <% let data = x.Symptoms.map((el)=>{%>
+                                   <% return el.name %> 
+                                <%}).join(',\n') %> 
+                                <%= data %> 
                             </td>
                         </tr>
 

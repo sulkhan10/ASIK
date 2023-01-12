@@ -15,38 +15,28 @@
         <div class="container"></div>
         <div class="mt-4 ml-5 mr-5 mb-4">
             <center>
-                <h1>USERS</h1>
+                <h1>Symptoms</h1>
             </center>
 
 
             <table class="table">
                 <thead>
                     <tr>
-                        <td>username</td>
-                        <td>role</td>
-                        <td>disease</td>
+                        <td>Name</td>
+                        <td>Diseases</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% users.forEach(x=>{%>
+                    <% symptoms.forEach(x=>{%>
                         <tr>
                             <td>
-                                <%= x.username %>
-                            </td>
-                            <td>
-                                <%= x.role %>
+                                <%= x.name %>
                             </td>
                             <td>
                                 <% let data = x.Diseases.map((el)=>{%>
-                                    <% return el.name %> 
-                                 <%}).join(',\n') %> 
-                                 <% if (data) {%> 
-                                    
-                                     <%= data %> 
-                                     <% } else {%> 
-                                    patient is healthy
-                                    <% } %> 
-                             
+                                   <% return el.name %> 
+                                <%}).join(',\n') %> 
+                                <%= data %> 
                             </td>
                         </tr>
 

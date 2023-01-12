@@ -3,6 +3,7 @@
     "name": "Influenza",
     "description": "gejala seseorang yang mengidap penyakit ini adalah sakit tenggorokan, bersin, dan pilek, hingga merasakan nyeri di beberapa bagian badan bahkan sekujur tubuh.",
     "level": 9,
+    "UserId" : 1,
     "createdAt": "2022-06-22",
     "updatedAt": "2022-11-26"
   },
@@ -10,6 +11,7 @@
     "name": "Dispepsia",
     "description": "Gejala yang ditimbulakan diantaranya adalah mual, kembung pada perut bagian atas dan merasakan panas pada perut bagian atas",
     "level": 2,
+    "UserId" : 2,
     "createdAt": "2022-11-06",
     "updatedAt": "2022-01-30"
   },
@@ -17,6 +19,7 @@
     "name": "Gastroenteritis",
     "description": "Gejala ugastroenteritis adalah diare, muntah, demam, sakit kepala, mual dan sakit perut",
     "level": 10,
+    "UserId" : 3,
     "createdAt": "2022-06-19",
     "updatedAt": "2022-05-18"
   }
