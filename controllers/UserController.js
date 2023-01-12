@@ -42,7 +42,17 @@ class UserController {
   }
 
   static users(req, res) {
-    User.findAll()
+
+    const { search } = req.query
+    
+
+    let option = {
+      order: [
+        ['role', 'ASC']
+      ], where: search
+    }
+
+    User.findAll(option)
       .then((users) => res.render("users", { users }))
       .catch((err) => res.send(err));
   }
