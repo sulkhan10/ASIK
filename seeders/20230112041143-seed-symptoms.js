@@ -13,7 +13,7 @@ module.exports = {
      * }], {});
     */
     let data = JSON.parse(fs.readFileSync('./data/symptoms.json','utf-8'))
-    .map(x=>{
+    .map(x => {
      x.createdAt = x.updatedAt = new Date()
      return x
    })

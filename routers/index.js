@@ -2,9 +2,8 @@ const express = require('express')
 const UserController = require('../controllers/UserController')
 const ContactController = require('../controllers/ContactController')
 const DiseaseController = require('../controllers/DiseaseController')
+const SymptomController = require('../controllers/SymptomController')
 const router = express.Router()
-
-
 
 router.get('/', (req, res) => {
   res.render('landing')
@@ -29,5 +28,6 @@ router.get('/home', (req, res) => {
 router.get('/users', UserController.users)
 router.get('/contacts', ContactController.contacts)
 router.get('/diseases', DiseaseController.diseases)
-// router.get('/symptom', Controller.addSymptom)
+router.get('/symptoms', SymptomController.addSymptoms)
+router.post('/symptoms', SymptomController.createSymptoms)
 module.exports = router

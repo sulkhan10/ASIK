@@ -6,6 +6,9 @@ class ContactController{
         .then(contacts=>res.render('contacts',{contacts}))
         .catch((err) => res.send(err));
     }
+    
+    
+
 }
 
 module.exports = ContactController

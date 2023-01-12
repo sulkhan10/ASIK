@@ -13,11 +13,11 @@ module.exports = {
      * }], {});
     */
     let data = JSON.parse(fs.readFileSync('./data/diseases.json','utf-8'))
-    .map(x=>{
+    .map(x => {
      x.createdAt = x.updatedAt = new Date()
      return x
-   })
-   return queryInterface.bulkInsert('Diseases',data)
+    })
+    return queryInterface.bulkInsert('Diseases',data)
   },
 
    down (queryInterface, Sequelize) {

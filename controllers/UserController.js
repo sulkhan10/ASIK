@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Disease, Symptom, SymptomDiseases } = require("../models");
 const bcrypt = require("bcryptjs");
 
 class UserController {
@@ -55,6 +55,17 @@ class UserController {
       }
     });
   }
+  // static getSymptom(req, res) {
+  //   const id = req.params.id
+  //   User.findByPk(id, {
+  //     include: 
+  //     Symptom
+  //   })
+  //   .then(patients => {
+  //     const symptoms = patients.Symptom.map(el => el.id)
+  //     return Disease.findOne({include: [{model: SymptomDiseases, where: symptoms}]})
+  //   })
+  // }
 }
 
 module.exports = UserController;
