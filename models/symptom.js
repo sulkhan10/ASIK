@@ -16,7 +16,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Symptom.init({
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "symptom can't be null"
+        },
+        notEmpty : {
+            msg: "symptom can't be empty"
+        },
+        costumSympton() {
+          if (this.name.length > 30) {
+            throw new Error("Symptom name must be consist maximum by 30 characters")
+          }
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Symptom',

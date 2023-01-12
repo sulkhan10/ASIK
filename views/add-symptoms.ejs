@@ -21,21 +21,33 @@
 
       <form action="/symptoms" method="post">
 
-
-        <div class="card m-auto" style="width: 50%">
-
-          <div class="card-body">
-            <form action="" method="post" autocomplete="off">
-              <div class="mb-3">
-                <label for="name" class="form-label">Gejala yang dirasakan:</label>
-                <input type="text" class="form-control" id="name" name="name">
-              </div>
-
-              <button type="submit" class="btn btn-outline-primary">Submit</button>
-
-            </form>
+        <% if (errors) { %>
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <% errors=errors.split(',') %>
+              <% errors.forEach(el=> { %>
+                <%= el %> <br>
+                  <% }) %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
           </div>
-        </div>
+          <% } %>
+
+
+            <div class="card m-auto" style="width: 50%">
+
+              <div class="card-body">
+                <form action="" method="post" autocomplete="off">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Gejala yang dirasakan:</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                  </div>
+
+                  <button type="submit" class="btn btn-outline-primary">Submit</button>
+
+                </form>
+              </div>
+            </div>
 
       </form>
       </tbody>

@@ -1,5 +1,6 @@
 const { User, Disease, Symptom, SymptomDiseases } = require("../models");
 const bcrypt = require("bcryptjs");
+const { Op } = require('sequelize')
 
 class UserController {
   static registerForm(req, res) {
