@@ -5,9 +5,7 @@ const DiseaseController = require('../controllers/DiseaseController')
 const SymptomController = require('../controllers/SymptomController')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.render('landing')
-})
+router.get('/', UserController.home)
 router.get('/register', UserController.registerForm)
 router.post('/register', UserController.postRegister)
 router.get('/login', UserController.loginForm)

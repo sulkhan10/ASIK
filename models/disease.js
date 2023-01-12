@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Disease extends Model {
     /**
@@ -12,16 +10,62 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Disease.hasMany(models.User),
-      Disease.belongsToMany(models.Symptom, { through: models.DiseaseSymptom });
+        Disease.belongsToMany(models.Symptom, {
+          through: models.DiseaseSymptom,
+        });
     }
   }
-  Disease.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    level: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Disease',
-  });
+  Disease.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Name can't be null",
+          },
+          notEmpty: {
+            msg: "Name can't be empty",
+          },
+        },
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Description can't be null",
+          },
+          notEmpty: {
+            msg: "Description can't be empty",
+          },
+          
+        },
+      },
+      level: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Level can't be null",
+          },
+          notEmpty: {
+            msg: "Level can't be empty",
+          },
+          customSymptom() {
+            if (this.name.length <= [0] ) {
+              throw new Error(
+                "Level minimum is 1"
+              );
+            }
+          },
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "Disease",
+    }
+  );
   return Disease;
 };

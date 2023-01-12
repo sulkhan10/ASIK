@@ -10,9 +10,15 @@ const { Op } = require("sequelize");
 const sendMail = require("../helpers/sendMail");
 
 class UserController {
+  static home(req, res) {
+    let date = User.timeNow("id-ID");
+    res.render("landing", { date });
+  }
   static registerForm(req, res) {
+    let { errors } = req.query;
+    console.log(errors);
     Disease.findAll()
-      .then((diseases) => res.render("registerForm", { diseases }))
+      .then((diseases) => res.render("registerForm", { diseases, errors }))
       .catch((err) => res.send(err));
   }
   static postRegister(req, res) {
@@ -27,7 +33,6 @@ class UserController {
       role,
       DiseaseId,
     } = req.body;
-    // res.send(req.body)
     User.create({ username, email, password, role, DiseaseId })
       .then(() => {
         return Contact.create({ phone, address, firstName, lastName });
@@ -36,7 +41,16 @@ class UserController {
         sendMail(email);
         res.redirect("/login");
       })
-      .catch((err) => res.send(err));
+      .catch((err) => {
+        if (err.name == "SequelizeValidationError") {
+          let errors = err.errors.map((x) => {
+            return x.message;
+          });
+          res.redirect(`/register?errors=${errors}`);
+        }else{
+          res.send(err)
+        }
+      })
   }
   static loginForm(req, res) {
     res.render("loginForm");
@@ -94,48 +108,65 @@ class UserController {
   static deleteUser(req, res) {
     const id = req.params.id;
     User.findByPk(id)
-    .then((user) => {
-      if (!user) throw new Error ("User Not found");
-      return user.destroy();
-    })
-    .then(()=> {return Contact.findByPk(id)})
-    .then((contact) => {
-      if (!contact) throw new Error ("Contact Not found");
-      return contact.destroy();
-    })
+      .then((user) => {
+        if (!user) throw new Error("User Not found");
+        return user.destroy();
+      })
+      .then(() => {
+        return Contact.findByPk(id);
+      })
+      .then((contact) => {
+        if (!contact) throw new Error("Contact Not found");
+        return contact.destroy();
+      })
       .then(() => res.redirect("/users"))
       .catch((err) => res.send(err));
-    }
-    
-    static editUser(req,res){
+  }
+
+  static editUser(req, res) {
+    let { errors } = req.query;
     const id = req.params.id;
     let options = {
       where: { role: "patient" },
       include: { model: Contact },
     };
-    let data = {}
+    let data = {};
     Disease.findAll()
-    .then(diseases=>{
-      data.diseases = diseases
-      return User.findByPk(id,options)
-    })
-      .then((user) =>{
-        data.user = user
-        res.render("editUser", { ...data })} )
+      .then((diseases) => {
+        data.diseases = diseases;
+        return User.findByPk(id, options);
+      })
+      .then((user) => {
+        data.user = user;
+        res.render("editUser", { ...data ,errors});
+      })
       .catch((err) => res.send(err));
   }
-  static updateUser(req,res){
-    let {id} = req.params
-    let {firstName,lastName,phone,address,username,email,DiseaseId} =req.body
+  static updateUser(req, res) {
+    let { id } = req.params;
+    let { firstName, lastName, phone, address, username, email, DiseaseId } =
+      req.body;
     // res.send(req.body)
-    User.update({ username, email, DiseaseId },{where:{id}})
+    User.update({ username, email, DiseaseId }, { where: { id } })
       .then(() => {
-        return Contact.update({ phone, address, firstName, lastName },{where:{id}});
+        return Contact.update(
+          { phone, address, firstName, lastName },
+          { where: { id } }
+        );
       })
       .then(() => {
         res.redirect("/users");
       })
-      .catch((err) => res.send(err));
+      .catch((err) => {
+        if (err.name == "SequelizeValidationError") {
+          let errors = err.errors.map((x) => {
+            return x.message;
+          });
+          res.redirect(`/users/${id}/edit?errors=${errors}`);
+        }else{
+          res.send(err)
+        }
+      })
   }
 }
 

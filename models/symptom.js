@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty : {
             msg: "symptom can't be empty"
         },
-        costumSympton() {
+        customSymptom() {
           if (this.name.length > 30) {
             throw new Error("Symptom name must be consist maximum by 30 characters")
           }

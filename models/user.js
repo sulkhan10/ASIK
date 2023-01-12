@@ -11,17 +11,83 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsTo(models.Disease)
-      User.hasOne(models.Contact)
+      User.belongsTo(models.Disease);
+      User.hasOne(models.Contact);
+    }
+    static timeNow(local) {
+      const time = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      let result = time.toLocaleDateString(local, options);
+      return result;
     }
   }
   User.init(
     {
-      username: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      role: DataTypes.STRING,
-      DiseaseId : DataTypes.STRING,
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Username name can't be null",
+          },
+          notEmpty: {
+            msg: "Username name can't be empty",
+          },
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Email name can't be null",
+          },
+          notEmpty: {
+            msg: "Email name can't be empty",
+          },
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Password name can't be null",
+          },
+          notEmpty: {
+            msg: "Password name can't be empty",
+          },
+        },
+      },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Role name can't be null",
+          },
+          notEmpty: {
+            msg: "Role name can't be empty",
+          },
+        },
+      },
+      DiseaseId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Disease ID name can't be null",
+          },
+          notEmpty: {
+            msg: "Disease ID name can't be empty",
+          },
+        },
+      },
     },
     {
       sequelize,

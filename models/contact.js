@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Contact.belongsTo(models.User)
     }
+    fullName(){
+      return `${this.firstName} ${this.lastName}`
+    }
   }
   Contact.init({
     phone: {
@@ -47,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: "first name can't be null"
         },
         notEmpty : {
-            msg: "first can't be empty"
+            msg: "first name can't be empty"
         }
       }
     },
