@@ -43,7 +43,7 @@ router.get('/contacts', ContactController.contacts)
 
 router.get('/logout',isLoggedIn, UserController.getLogout)
 router.get('/home',isLoggedIn, UserController.home)
-router.get('/users/:id/edit', UserController.editUser)
+router.get('/users/:id/edit',isLoggedIn, isDoctor, UserController.editUser)
 router.post('/users/:id/edit',isLoggedIn, isDoctor, UserController.updateUser)
 router.get('/users/:id/delete',isLoggedIn, isDoctor, UserController.deleteUser)
 

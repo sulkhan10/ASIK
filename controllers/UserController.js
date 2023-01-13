@@ -81,50 +81,49 @@ class UserController {
         }
       })
       .catch((err) => res.send(err));
-  }
-
-  static users(req, res) {
-    let { search } = req.query;
-    let options = {
-      where: { role: "patient" },
-      include: [{ model: Disease }, { model: Contact }],
-    };
-    if (search) {
-      options.where.username = {
-        [Op.iLike]: `%${search}%`,
-      };
     }
-    User.findAll(options)
+    
+    static users(req, res) {
+      let { search } = req.query;
+      let options = {
+        where: { role: "patient" },
+        include: [{ model: Disease }, { model: Contact }],
+      };
+      if (search) {
+        options.where.username = {
+          [Op.iLike]: `%${search}%`,
+        };
+      }
+      User.findAll(options)
       // .then(data=>res.send(data))
       .then((users) => res.render("users", { users }))
       .catch((err) => res.send(err));
-  }
-
-  static getLogout(req, res) {
-    req.session.destroy(function (err) {
-      if (err) {
-        res.send(err);
-      } else {
+    }
+    
+    static getLogout(req, res) {
+      req.session.destroy(function (err) {
+        if (err) {
+          res.send(err);
+        } else {
         res.redirect("/");
       }
     });
   }
   static deleteUser(req, res) {
-    const id = req.params.id;
-    User.findByPk(id)
-      .then((user) => {
-        if (!user) throw new Error("User Not found");
-        return user.destroy();
-      })
-      .then(() => {
-        return Contact.findByPk(id);
-      })
-      .then((contact) => {
-        if (!contact) throw new Error("Contact Not found");
-        return contact.destroy();
-      })
-      .then(() => res.redirect("/users"))
-      .catch((err) => res.send(err));
+    let id = +req.params.id
+        User.findByPk(id)
+        .then(user=>{
+            if (!user) throw "User Not Found"
+            return user.destroy()
+        })
+        .then(_=>{
+          Contact.findByPk(id)
+        })
+        .then(() => {return res.redirect('/users')})
+        .catch(err=>{
+            res.send(err)
+        })
+  
   }
 
   static editUser(req, res) {
