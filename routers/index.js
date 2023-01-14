@@ -35,16 +35,28 @@ let isDoctor = (req, res, next) => {
       }
 }
 
-router.get('/diseases', isLoggedIn, DiseaseController.diseases)
-router.get('/symptoms',isLoggedIn, SymptomController.symptoms)
-router.get('/users' ,isLoggedIn, isDoctor, UserController.users)
+// router.get('/diseases', isLoggedIn, DiseaseController.diseases)
+// router.get('/symptoms',isLoggedIn, SymptomController.symptoms)
+// router.get('/users' ,isLoggedIn, isDoctor, UserController.users)
+// router.get('/contacts', ContactController.contacts)
+
+
+// router.get('/logout',isLoggedIn, UserController.getLogout)
+// router.get('/home',isLoggedIn, UserController.home)
+// router.get('/users/:id/edit',isLoggedIn, isDoctor, UserController.editUser)
+// router.post('/users/:id/edit',isLoggedIn, isDoctor, UserController.updateUser)
+// router.get('/users/:id/delete',isLoggedIn, isDoctor, UserController.deleteUser)
+
+router.get('/diseases', DiseaseController.diseases)
+router.get('/symptoms', SymptomController.symptoms)
+router.get('/users', UserController.users)
 router.get('/contacts', ContactController.contacts)
 
 
-router.get('/logout',isLoggedIn, UserController.getLogout)
-router.get('/home',isLoggedIn, UserController.home)
-router.get('/users/:id/edit',isLoggedIn, isDoctor, UserController.editUser)
-router.post('/users/:id/edit',isLoggedIn, isDoctor, UserController.updateUser)
-router.get('/users/:id/delete',isLoggedIn, isDoctor, UserController.deleteUser)
+router.get('/logout', UserController.getLogout)
+router.get('/home', UserController.home)
+router.get('/users/:id/edit', UserController.editUser)
+router.post('/users/:id/edit', UserController.updateUser)
+router.get('/users/:id/delete', UserController.deleteUser)
 
 module.exports = router
