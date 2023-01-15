@@ -1,24 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">ASIK</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/home"
-        >Home<span class="sr-only">(current)</span></a
-      >
-      <a class="nav-item nav-link" href="/users">Patients</a>
-      <a class="nav-item nav-link" href="/diseases">Diseases</a>
-      <a class="nav-item nav-link" href="/symptoms">Symptoms</a>
+<div class="navbar bg-gradient-to-r from-cyan-200 to-sky-50">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn  btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a href="/users">Patients</a></li>
+        <li><a href="/diseases">Diseases</a></li>
+        <li><a href="/symptoms">Symptoms</a></li>
+      </ul>
     </div>
   </div>
-</nav>
+  <div class="navbar-center">
+    <a class="btn btn-ghost normal-case text-black text-xl">ASIK Aplikasi Sistem Integrasi Kesehatan</a>
+  </div>
+  <div class="navbar-end">
+   <a href="/login" class="btn btn-success mr-7">Login</a> 
+   <a href="/register" class="btn btn-success">Register</a> 
+  </div>
+</div>
